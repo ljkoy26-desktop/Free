@@ -164,39 +164,54 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 	/* 인터페이스 구현사항
 	
 	1. SQL Tool (내보내기 / 불러오기)
-	 - 
+	 * 내보내기
+	  - 로우 하나를 객체로 잡고, 컬럼들을 순회하면서 데이터를 가져온다
+	  - 이때, 컬럼의 타입을 검증하는 과정이 있어야할거같다 (date, varchar, number)
+	  7369	SMITH	CLERK	7902	1980/12/17 00:00:00	800		20
+	  7499	ALLEN	SALESMAN	7698	1981/02/20 00:00:00	1600	300	30
 
-
-
+	  {
+		"EMPNO":7369,
+		"ENAME":"SMITH",
+		"JOB":"CLERK"
+	  }
 	*/
-
+	CkString strOut;
 	CString strTemp = _T("JSON TEST");
 	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
-	/************************/
-	// 실행구문
-
-	
-
 
 	CkJsonObject json;
+
+	bool success;
+	int index = -1;
+
+	success = json.AddStringAt(2, "Title", "Pan's Labyrinth");
+	success = json.AddStringAt(1, "Director", "Guillermo del Toro");
+	success = json.AddStringAt(0, "Original_Title", "El laberinto del fauno");
+	success = json.AddIntAt(3, "Year_Released", 2006);
+	ss
 	json.put_EmitCompact(false);
-
-	// Assume the file contains the data as shown above..
-	//bool success = json.LoadFile("C:\\Users\\Warevalley\\Desktop\\JsonTest.json");
-	bool success = json.LoadFile("D:\\깃허브브랜치\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest.json");
-
-	if (success != true)
-	{
-		strTemp = json.lastErrorText();
-	}
-
-
-
-
-
-	strTemp = json.stringOf("nestedObject.aaa.bb1.cc2");
+	strOut.append(json.emit());
+	//strTemp = (LPCTSTR)strOut;
+	strOut.append("\r\n");
 
 	/************************/
-	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+	
+
+	SetDlgItemText(IDC_EDIT_JSONTEST, strOut);
+	// JSON 파일불러와서 읽기
+
+	//CkJsonObject json;
+	//json.put_EmitCompact(false);
+	//bool success = json.LoadFile("D:\\깃허브브랜치\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest.json");
+
+	//if (success != true)
+	//{
+	//	strTemp = json.lastErrorText();
+	//}
+	//strTemp = json.stringOf("nestedObject.aaa.bb1.cc2");	
+
+	/************************/
+	//SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
 
 }
