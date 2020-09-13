@@ -1,0 +1,21 @@
+1. #include를 붙이는 경로가 아래 C++ 인클루드 디렉토리 설정에 따라 바뀐다.
+2. ../ 가 어디에 있는지에 따라 lib 파일 경로가 달라진다.
+
+#include "CkJsonObject.h"
+#include <iostream>
+
+#pragma comment(lib, "ws2_32.lib") // 이구문이 반드시 필요합니다.
+
+
+
+
+
+C++ -> 일반 -> 추가포함 디렉토리
+../include/chilkat;%(AdditionalIncludeDirectories)
+
+링커 -> 일반 -> 추가라이브러리 디렉토리
+../lib/chilkat;%(AdditionalLibraryDirectories)
+
+링커 -> 입력 -> 추가 종속성 
+ChilkatDbg.lib;%(AdditionalDependencies)
+ChilkatRel.lib;%(AdditionalDependencies)
