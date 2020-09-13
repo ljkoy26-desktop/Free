@@ -161,9 +161,14 @@ HCURSOR CCkJsonMFC_001Dlg::OnQueryDragIcon()
 
 void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 {
-	// 인터페이스 구현사항
+	/* 인터페이스 구현사항
+	
+	1. SQL Tool (내보내기 / 불러오기)
+	 - 
 
 
+
+	*/
 
 	CString strTemp = _T("JSON TEST");
 	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
