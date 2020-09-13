@@ -3,7 +3,8 @@
 
 #include "stdafx.h"
 #include <stdio.h>
-#include "include\chilkat\CkJsonObject.h"
+//#include "include\chilkat\CkJsonObject.h"
+#include "CkJsonObject.h"
 #include <iostream>
 
 #pragma comment(lib, "ws2_32.lib")
@@ -15,7 +16,9 @@ int main()
 	json.put_EmitCompact(false);
 
 	// Assume the file contains the data as shown above..
-	bool success = json.LoadFile("C:\\Users\\Warevalley\\Desktop\\JsonTest.json");
+	//bool success = json.LoadFile("C:\\Users\\Warevalley\\Desktop\\JsonTest.json");
+	bool success = json.LoadFile("D:\\깃허브브랜치\\Free\\CkJsonConsole_001\\JsonTest.json");
+
 	if (success != true) 
 	{
 		std::cout << json.lastErrorText() << "\r\n";
@@ -23,8 +26,9 @@ int main()
 	}
 
 
-	//std::cout << json.stringOf("nestedObject.aaa.bb1.cc1") << "\r\n";
-	std::cout << json.stringOf("nestedObject.aaa.bb1[0]") << "\r\n";
+	std::cout << json.stringOf("nestedObject.aaa.bb1.cc2") << "\r\n";
+
+	//std::cout << json.stringOf("nestedObject.aaa.bb1[0]") << "\r\n";
 
 	//CkJsonObject json;
 	//bool succecs;
