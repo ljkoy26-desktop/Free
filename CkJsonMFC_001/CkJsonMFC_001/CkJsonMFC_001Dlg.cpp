@@ -189,7 +189,7 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 	success = json.AddStringAt(1, "Director", "Guillermo del Toro");
 	success = json.AddStringAt(0, "Original_Title", "El laberinto del fauno");
 	success = json.AddIntAt(3, "Year_Released", 2006);
-	ss
+	
 	json.put_EmitCompact(false);
 	strOut.append(json.emit());
 	//strTemp = (LPCTSTR)strOut;
