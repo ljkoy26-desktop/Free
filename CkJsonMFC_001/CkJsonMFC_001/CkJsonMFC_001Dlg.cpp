@@ -8,12 +8,14 @@
 #include "afxdialogex.h"
 
 #include "CkJsonObject.h"
+#include "CkJsonArray.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-#pragma comment(lib, "ws2_32.lib")
+// crypt32.lib, ws2_32.lib, dnsapi.lib
+//#pragma comment(lib, "ws2_32.lib")
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
@@ -69,6 +71,8 @@ BEGIN_MESSAGE_MAP(CCkJsonMFC_001Dlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_JSONTEST, &CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest)
+	ON_BN_CLICKED(IDC_BUTTON1, &CCkJsonMFC_001Dlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &CCkJsonMFC_001Dlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 
@@ -185,14 +189,14 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 	bool success;
 	int index = -1;
 
-	success = json.AddStringAt(2, "Title", "Pan's Labyrinth");
+	success = json.AddStringAt(0, "Title", "Pan's Labyrinth");
 	success = json.AddStringAt(1, "Director", "Guillermo del Toro");
-	success = json.AddStringAt(0, "Original_Title", "El laberinto del fauno");
+	success = json.AddStringAt(2, "Original_Title", "El laberinto del fauno");
 	success = json.AddIntAt(3, "Year_Released", 2006);
+	success = json.AddNumberAt(4, "Year_Released", "2006.12");
 	
 	json.put_EmitCompact(false);
 	strOut.append(json.emit());
-	//strTemp = (LPCTSTR)strOut;
 	strOut.append("\r\n");
 
 	/************************/
@@ -214,4 +218,114 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 	/************************/
 	//SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
 
+}
+
+
+void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
+{
+
+	CkJsonObject json;
+
+	bool success;
+
+	//  The only reason for failure in the following lines of code would be an out-of-memory condition..
+
+	//  An index value of -1 is used to append at the end.
+	int index = -1;
+	json.put_EmitCompact(true);
+	success = json.AddStringAt(-1, "Title", "The Cuckoo's Calling");
+	success = json.AddStringAt(-1, "Author", "Robert Galbraith");
+	success = json.AddStringAt(-1, "Genre", "classic crime novel");
+
+	//  Let's create the Detail JSON object:
+	success = json.AddObjectAt(-1, "Detail");
+	CkJsonObject *detail = json.ObjectAt(json.get_Size() - 1);
+	success = detail->AddStringAt(-1, "Publisher", "Little Brown");
+	success = detail->AddIntAt(-1, "Publication_Year", 2013); // 소수지원이 안된다. number 타입 추천
+	success = detail->AddNumberAt(-1, "ISBN-13", "9781408704004");
+	success = detail->AddStringAt(-1, "Language", "English");
+	success = detail->AddIntAt(-1, "Pages", 494);
+	delete detail;
+
+	//  Add the array for Price
+
+
+
+
+	success = json.AddArrayAt(-1, "Price");
+	CkJsonArray *aPrice = json.ArrayAt(json.get_Size() - 1);
+
+	//  Entry entry in aPrice will be a JSON object.
+
+	//  Append a new/empty ojbect to the end of the aPrice array.
+	success = aPrice->AddObjectAt(-1);
+	//  Get the object that was just appended.
+	CkJsonObject *priceObj = aPrice->ObjectAt(aPrice->get_Size() - 1);
+	success = priceObj->AddStringAt(-1, "type", "Hardcover");
+	success = priceObj->AddNumberAt(-1, "price", "16.65");
+	delete priceObj;
+
+	success = aPrice->AddObjectAt(-1);
+	priceObj = aPrice->ObjectAt(aPrice->get_Size() - 1);
+	success = priceObj->AddStringAt(-1, "type", "Kindle Edition");
+	success = priceObj->AddNumberAt(-1, "price", "7.00");
+
+	delete priceObj;
+	delete aPrice;
+
+//	json.put_EmitCompact(false);
+//	AfxMessageBox(json.emit());
+	SetDlgItemText(IDC_EDIT_JSONTEST, (LPTSTR)json.emit());
+
+}
+
+
+void CCkJsonMFC_001Dlg::OnBnClickedButton2() // 중첩배열
+{
+	CkJsonObject json;
+	CString strTemp;
+	CString strTemp2;
+	// This is the above JSON with whitespace chars removed (SPACE, TAB, CR, and LF chars).
+	// The presence of whitespace chars for pretty-printing makes no difference to the Load
+	// method. 
+	const char *jsonStr = "{ \"numbers\" : [ [\"even\", 2, 4, 6, 8], [\"prime\", 2, 3, 5, 7, 11, 13] ] }";
+
+	bool success = json.Load(jsonStr);
+	if (success != true) {
+		SetDlgItemText(IDC_EDIT_JSONTEST, json.lastErrorText());
+		return;
+	}
+
+	// Get the value of the "numbers" object, which is an array that contains JSON arrays.
+	CkJsonArray *outerArray = json.ArrayOf("numbers");
+	if (json.get_LastMethodSuccess() == false) {
+		SetDlgItemText(IDC_EDIT_JSONTEST, "numbers array not found.");
+		return;
+	}
+
+	int numArrays = outerArray->get_Size();
+	int i;
+
+	for (i = 0; i <= numArrays - 1; i++) {
+
+		CkJsonArray *innerArray = outerArray->ArrayAt(i);
+
+		// The first item in the innerArray is a string
+		strTemp = innerArray->stringAt(0);
+		strTemp += ":\r\n";
+
+		int numInnerItems = innerArray->get_Size();
+		int j;
+		for (j = 1; j <= numInnerItems - 1; j++) {
+
+			strTemp2.Format("%d", innerArray->IntAt(0));
+			strTemp += strTemp2;
+			strTemp += ":\r\n";
+			strTemp2 = "";			
+		}
+		SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+		delete innerArray;
+	}
+
+	delete outerArray;
 }
