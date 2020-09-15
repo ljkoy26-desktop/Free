@@ -73,6 +73,7 @@ BEGIN_MESSAGE_MAP(CCkJsonMFC_001Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_JSONTEST, &CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest)
 	ON_BN_CLICKED(IDC_BUTTON1, &CCkJsonMFC_001Dlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &CCkJsonMFC_001Dlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &CCkJsonMFC_001Dlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -161,8 +162,6 @@ HCURSOR CCkJsonMFC_001Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
-
 void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 {
 	/* 인터페이스 구현사항
@@ -227,12 +226,11 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 	CkJsonObject json;
 
 	bool success;
-
+	json.put_EmitCompact(false);
 	//  The only reason for failure in the following lines of code would be an out-of-memory condition..
 
 	//  An index value of -1 is used to append at the end.
 	int index = -1;
-	json.put_EmitCompact(true);
 	success = json.AddStringAt(-1, "Title", "The Cuckoo's Calling");
 	success = json.AddStringAt(-1, "Author", "Robert Galbraith");
 	success = json.AddStringAt(-1, "Genre", "classic crime novel");
@@ -328,4 +326,58 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton2() // 중첩배열
 	}
 
 	delete outerArray;
+}
+
+
+void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
+{
+	CString strTemp;
+	CString strNum;
+	int i=0, j=0;
+	bool success = false;
+	CkJsonObject json;
+	
+	json.put_EmitCompact(false);
+	
+
+	//success = json.AddObjectAt(3, "Detail1");
+	//int n = json.get_Size();
+	////  Let's create the Detail JSON object:
+	//CkJsonObject *detail = json.ObjectAt(json.get_Size() - 1);
+	//success = detail->AddStringAt(-1, "Publisher", "Little Brown");
+	//success = detail->AddIntAt(-1, "Publication_Year", 2013);
+	//success = detail->AddNumberAt(-1, "ISBN-13", "9781408704004");
+	//success = detail->AddStringAt(-1, "Language", "English");
+	//success = detail->AddIntAt(-1, "Pages", 494);
+	//delete detail;
+
+	// ObjectAt *
+	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
+
+	for (i = 0; i < 4; i++)
+	{
+		strNum.Format(_T("ROWNUM : %d"), i);		
+		json.AddObjectAt(-1 , strNum);
+		CkJsonObject *json2 = json.ObjectAt(i);
+
+		for (j = 0; j < 4; j++)
+		{
+			json2->AddStringAt(-1,"컬럼명","데이터");
+			json2->AddIntAt(-1,"int", 3);
+		}		
+		delete json2;
+	}
+	
+	
+	strTemp = json.emit();
+	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+
+
+	if (json.WriteFile("C:\\노트북깃허브\\Free\\CkJsonConsole_001\\JSON샘플\\JsonTest3.json"))
+	{
+		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
+	}
+	else {
+		SetDlgItemText(IDC_EDIT_STATUS, _T("응 아니야^^"));
+	}
 }

@@ -1,0 +1,11 @@
+{
+   "alphabet": "abcdefghijklmnopqrstuvwxyz",
+   "sampleData" : {
+           "pi": 3.14,
+	   "apple": "juicy",
+	   "hungry": true,
+	   "withoutValue": null,
+           "answer": 42
+          
+	}
+}
