@@ -335,49 +335,39 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 	CString strNum;
 	int i=0, j=0;
 	bool success = false;
-	CkJsonObject json;
+	CkJsonObject jsonParent;
 	
-	json.put_EmitCompact(false);
-	
-
-	//success = json.AddObjectAt(3, "Detail1");
-	//int n = json.get_Size();
-	////  Let's create the Detail JSON object:
-	//CkJsonObject *detail = json.ObjectAt(json.get_Size() - 1);
-	//success = detail->AddStringAt(-1, "Publisher", "Little Brown");
-	//success = detail->AddIntAt(-1, "Publication_Year", 2013);
-	//success = detail->AddNumberAt(-1, "ISBN-13", "9781408704004");
-	//success = detail->AddStringAt(-1, "Language", "English");
-	//success = detail->AddIntAt(-1, "Pages", 494);
-	//delete detail;
-
-	// ObjectAt *
+	jsonParent.put_EmitCompact(false);
+	jsonParent.AddObjectAt(-1, "asd");
 	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
 
 	for (i = 0; i < 4; i++)
 	{
 		strNum.Format(_T("ROWNUM : %d"), i);		
-		json.AddObjectAt(-1 , strNum);
-		CkJsonObject *json2 = json.ObjectAt(i);
+		jsonParent.AddObjectAt(-1 , strNum);
+		CkJsonObject *json2 = jsonParent.ObjectAt(i+1);
 
 		for (j = 0; j < 4; j++)
 		{
-			json2->AddStringAt(-1,"컬럼명","데이터");
 			json2->AddIntAt(-1,"int", 3);
+			json2->AddStringAt(-1, "sa", "asdasd");
 		}		
 		delete json2;
 	}
 	
 	
-	strTemp = json.emit();
+	strTemp = jsonParent.emit();
 	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
 
 
-	if (json.WriteFile("C:\\노트북깃허브\\Free\\CkJsonConsole_001\\JSON샘플\\JsonTest3.json"))
+	if (jsonParent.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest_002.json")) // 성공 1 , 실패 0
 	{
 		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
 	}
 	else {
-		SetDlgItemText(IDC_EDIT_STATUS, _T("응 아니야^^"));
+		//SetDlgItemText(IDC_EDIT_STATUS, _T("응 아니야^^"));
+		SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorText());
+		
+		
 	}
 }
