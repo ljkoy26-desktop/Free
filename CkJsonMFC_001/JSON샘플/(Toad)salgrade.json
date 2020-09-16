@@ -1,0 +1,29 @@
+{
+  "recordset": [
+  {
+    "GRADE":"1",
+    "LOSAL":"700",
+    "HISAL":"1200"
+  },
+  {
+    "GRADE":"2",
+    "LOSAL":"1201",
+    "HISAL":"1400"
+  },
+  {
+    "GRADE":"3",
+    "LOSAL":"1401",
+    "HISAL":"2000"
+  },
+  {
+    "GRADE":"4",
+    "LOSAL":"2001",
+    "HISAL":"3000"
+  },
+  {
+    "GRADE":"5",
+    "LOSAL":"3001",
+    "HISAL":"9999"
+  }
+  ]
+}
