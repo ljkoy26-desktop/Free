@@ -74,6 +74,7 @@ BEGIN_MESSAGE_MAP(CCkJsonMFC_001Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CCkJsonMFC_001Dlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &CCkJsonMFC_001Dlg::OnBnClickedButton2)
 	ON_BN_CLICKED(IDC_BUTTON3, &CCkJsonMFC_001Dlg::OnBnClickedButton3)
+	ON_BN_CLICKED(IDC_BUTTON4, &CCkJsonMFC_001Dlg::OnBnClickedButton4)
 END_MESSAGE_MAP()
 
 
@@ -338,6 +339,7 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 	CkJsonObject jsonParent;
 	
 	jsonParent.put_EmitCompact(false);
+	jsonParent.put_Utf8(true);
 	jsonParent.AddObjectAt(-1, "asd");
 	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
 
@@ -370,4 +372,16 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 		
 		
 	}
+}
+
+
+void CCkJsonMFC_001Dlg::OnBnClickedButton4() // __FILE__
+{
+	CString strTemp;
+	strTemp.Format(_T("__FILE__ : %s"), __FILE__);
+	AfxMessageBox(strTemp);
+	strTemp.Format(_T("__LINE__ : %s"), __LINE__);
+	AfxMessageBox(strTemp);
+	strTemp.Format(_T("__FUNCTION__ : %s"), __FUNCTION__);
+	AfxMessageBox(strTemp);
 }
