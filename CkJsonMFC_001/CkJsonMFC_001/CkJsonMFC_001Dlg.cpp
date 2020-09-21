@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 
 #include "CkJsonObject.h"
+#include "CkJsonObjectW.h"
 #include "CkJsonArray.h"
 
 #ifdef _DEBUG
@@ -281,52 +282,52 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton2() // 중첩배열
 {
-	CkJsonObject json;
-	CString strTemp;
-	CString strTemp2;
-	// This is the above JSON with whitespace chars removed (SPACE, TAB, CR, and LF chars).
-	// The presence of whitespace chars for pretty-printing makes no difference to the Load
-	// method. 
-	const char *jsonStr = "{ \"numbers\" : [ [\"even\", 2, 4, 6, 8], [\"prime\", 2, 3, 5, 7, 11, 13] ] }";
+	//CkJsonObject json;
+	//CString strTemp;
+	//CString strTemp2;
+	//// This is the above JSON with whitespace chars removed (SPACE, TAB, CR, and LF chars).
+	//// The presence of whitespace chars for pretty-printing makes no difference to the Load
+	//// method. 
+	//const char *jsonStr = "{ \"numbers\" : [ [\"even\", 2, 4, 6, 8], [\"prime\", 2, 3, 5, 7, 11, 13] ] }";
 
-	bool success = json.Load(jsonStr);
-	if (success != true) {
-		SetDlgItemText(IDC_EDIT_JSONTEST, json.lastErrorText());
-		return;
-	}
+	//bool success = json.Load(jsonStr);
+	//if (success != true) {
+	//	SetDlgItemText(IDC_EDIT_JSONTEST, json.lastErrorText());
+	//	return;
+	//}
 
-	// Get the value of the "numbers" object, which is an array that contains JSON arrays.
-	CkJsonArray *outerArray = json.ArrayOf("numbers");
-	if (json.get_LastMethodSuccess() == false) {
-		SetDlgItemText(IDC_EDIT_JSONTEST, "numbers array not found.");
-		return;
-	}
+	//// Get the value of the "numbers" object, which is an array that contains JSON arrays.
+	//CkJsonArray *outerArray = json.ArrayOf("numbers");
+	//if (json.get_LastMethodSuccess() == false) {
+	//	SetDlgItemText(IDC_EDIT_JSONTEST, "numbers array not found.");
+	//	return;
+	//}
 
-	int numArrays = outerArray->get_Size();
-	int i;
+	//int numArrays = outerArray->get_Size();
+	//int i;
 
-	for (i = 0; i <= numArrays - 1; i++) {
+	//for (i = 0; i <= numArrays - 1; i++) {
 
-		CkJsonArray *innerArray = outerArray->ArrayAt(i);
+	//	CkJsonArray *innerArray = outerArray->ArrayAt(i);
 
-		// The first item in the innerArray is a string
-		strTemp = innerArray->stringAt(0);
-		strTemp += ":\r\n";
+	//	// The first item in the innerArray is a string
+	//	strTemp = innerArray->stringAt(0);
+	//	strTemp += ":\r\n";
 
-		int numInnerItems = innerArray->get_Size();
-		int j;
-		for (j = 1; j <= numInnerItems - 1; j++) {
+	//	int numInnerItems = innerArray->get_Size();
+	//	int j;
+	//	for (j = 1; j <= numInnerItems - 1; j++) {
 
-			strTemp2.Format("%d", innerArray->IntAt(0));
-			strTemp += strTemp2;
-			strTemp += ":\r\n";
-			strTemp2 = "";			
-		}
-		SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
-		delete innerArray;
-	}
+	//		strTemp2.Format("%d", innerArray->IntAt(0));
+	//		strTemp += strTemp2;
+	//		strTemp += ":\r\n";
+	//		strTemp2 = "";			
+	//	}
+	//	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+	//	delete innerArray;
+	//}
 
-	delete outerArray;
+	//delete outerArray;
 }
 
 
@@ -336,23 +337,23 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 	CString strNum;
 	int i=0, j=0;
 	bool success = false;
-	CkJsonObject jsonParent;
+	CkJsonObjectW jsonParent;
 	
 	jsonParent.put_EmitCompact(false);
-	jsonParent.put_Utf8(true);
-	jsonParent.AddObjectAt(-1, "asd");
+	//jsonParent.put_Utf8(true);
+	jsonParent.AddObjectAt(-1, L"asd");
 	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
 
 	for (i = 0; i < 4; i++)
 	{
 		strNum.Format(_T("ROWNUM : %d"), i);		
 		jsonParent.AddObjectAt(-1 , strNum);
-		CkJsonObject *json2 = jsonParent.ObjectAt(i+1);
+		CkJsonObjectW *json2 = jsonParent.ObjectAt(i+1);
 
 		for (j = 0; j < 4; j++)
 		{
-			json2->AddIntAt(-1,"int", 3);
-			json2->AddStringAt(-1, "sa", "asdasd");
+			//json2->AddIntAt(-1,"int", 3);
+			json2->AddStringAt(-1, L"sa", L"asdasd");
 		}		
 		delete json2;
 	}
@@ -361,15 +362,23 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 	strTemp = jsonParent.emit();
 	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
 
-
-	if (jsonParent.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest_002.json")) // 성공 1 , 실패 0
+	CString strTemp2;
+	if (jsonParent.WriteFile(L"C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘\\JsonTest_005.json")) // 성공 1 , 실패 0
 	{
 		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
 	}
 	else {
 		//SetDlgItemText(IDC_EDIT_STATUS, _T("응 아니야^^"));
+		strTemp2 = jsonParent.lastErrorText();
 		SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorText());
+		//SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorXml());
 		
+
+		OSVERSIONINFO osvi;
+		ZeroMemory(&osvi, sizeof(OSVERSIONINFO));
+		osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+		GetVersionEx(&osvi);
+
 		
 	}
 }
