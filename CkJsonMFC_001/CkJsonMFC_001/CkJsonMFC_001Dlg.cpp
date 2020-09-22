@@ -15,6 +15,8 @@
 #define new DEBUG_NEW
 #endif
 
+#define JSON_FILEPATH "C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\"
+
 // crypt32.lib, ws2_32.lib, dnsapi.lib
 //#pragma comment(lib, "ws2_32.lib")
 
@@ -76,6 +78,7 @@ BEGIN_MESSAGE_MAP(CCkJsonMFC_001Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON2, &CCkJsonMFC_001Dlg::OnBnClickedButton2)
 	ON_BN_CLICKED(IDC_BUTTON3, &CCkJsonMFC_001Dlg::OnBnClickedButton3)
 	ON_BN_CLICKED(IDC_BUTTON4, &CCkJsonMFC_001Dlg::OnBnClickedButton4)
+	ON_BN_CLICKED(IDC_BUTTON_WRITEFILE, &CCkJsonMFC_001Dlg::OnBnClickedButtonWritefile)
 END_MESSAGE_MAP()
 
 
@@ -333,57 +336,166 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton2() // 중첩배열
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 {
-	CString strTemp;
-	CString strNum;
-	int i=0, j=0;
-	bool success = false;
-	CkJsonObject jsonParent;
-	
-	jsonParent.put_EmitCompact(false);
-	//jsonParent.put_Utf8(true);
-	jsonParent.AddObjectAt(-1, "asd");
-	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
+//	CString strTemp;
+//	CString strNum;
+//	int i=0, j=0;
+//	bool success = false;
+//	CkJsonObject jsonParent;
+//	
+//	jsonParent.put_EmitCompact(false);
+//	//jsonParent.put_Utf8(true);
+//	jsonParent.AddObjectAt(-1, "asd");
+//	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
+//
+//	for (i = 0; i < 4; i++)
+//	{
+//		strNum.Format(_T("ROWNUM : %d"), i);		
+//		jsonParent.AddObjectAt(-1 , strNum);
+//		CkJsonObject *json2 = jsonParent.ObjectAt(i+1);
+//
+//		for (j = 0; j < 4; j++)
+//		{
+//			//json2->AddIntAt(-1,"int", 3);
+//			json2->AddStringAt(-1, "sa", "이재현");
+//		}		
+//		delete json2;
+//	}
+//	
+//	
+//	strTemp = jsonParent.emit();
+//	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+//
+//	CString strTemp2;
+//	if (jsonParent.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest_005.json")) // 성공 1 , 실패 0
+//	{
+//		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
+//	}
+//	else {
+//		//SetDlgItemText(IDC_EDIT_STATUS, _T("응 아니야^^"));
+//		strTemp2 = jsonParent.lastErrorText();
+//		SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorText());
+//		//SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorXml());
+//				
+//	}
+}
+
+
+void CCkJsonMFC_001Dlg::OnBnClickedButton4() // 파일읽기
+{
+#ifdef _UNICODE
+	CStringW strTemp, strLine = L"";
+	CkJsonObjectW json;
+		CStringW strPath = L"C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\";
+		
+	CStringW strFileName = L"Ckjsonobject(안시).json";
+	strPath += strFileName;
+
+	if (json.LoadFile(strPath))
+	{
+		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
+		int i, j;
+		for (i = 0; i < json.get_Size(); i++)
+		{
+			CkJsonObjectW *json2 = json.ObjectAt(i);			
+			for (j = 0; j < json2->get_Size(); j++)
+			{				
+				strLine += json2->stringAt(j);
+				strLine.Append(L"\r\n");
+				//strLine += _T("\n");
+			}
+			delete json2;
+		}
+		SetDlgItemText(IDC_EDIT_JSONTEST, strLine);
+	}	
+	else
+	{
+		strTemp.Format(json.lastErrorText());
+		SetDlgItemText(IDC_EDIT_STATUS, strTemp);
+	}		
+#else
+	CString strTemp, strLine = _T("");
+	CkJsonObject json;
+	CkJsonObjectW jsonW;
+	CString strPath = "C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\";
+
+	CString strFileName = "Ckjsonobject(안시).json";
+	strPath += strFileName;
+
+	if (json.LoadFile(strPath))
+	{
+		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
+		int i, j;
+		for (i = 0; i < json.get_Size(); i++)
+		{
+			CkJsonObject *json2 = json.ObjectAt(i);
+			for (j = 0; j < json2->get_Size(); j++)
+			{
+				strLine += json2->stringAt(j);
+				strLine.Append("\r\n");
+				//strLine += _T("\n");
+			}
+			delete json2;
+		}
+		SetDlgItemText(IDC_EDIT_JSONTEST, strLine);
+	}
+	else
+	{
+		strTemp.Format(json.lastErrorText());
+		SetDlgItemText(IDC_EDIT_STATUS, strTemp);
+	}
+#endif
+}
+
+
+void CCkJsonMFC_001Dlg::OnBnClickedButtonWritefile()
+{
+
+#ifdef _UNICODE
+	CkJsonObjectW json;
+	json.put_EmitCompact(false);
+	CStringW strNum, strLine, strTemp;
+	int i, j;
 
 	for (i = 0; i < 4; i++)
 	{
-		strNum.Format(_T("ROWNUM : %d"), i);		
-		jsonParent.AddObjectAt(-1 , strNum);
-		CkJsonObject *json2 = jsonParent.ObjectAt(i+1);
+		strNum.Format(_T("ROWNUM : %d"), i);
+		json.AddObjectAt(-1, strNum);
+		CkJsonObjectW *json2 = json.ObjectAt(i);
 
 		for (j = 0; j < 4; j++)
 		{
 			//json2->AddIntAt(-1,"int", 3);
-			json2->AddStringAt(-1, "sa", "이재현");
-		}		
+			json2->AddStringAt(-1, L"sa", L"이재현");
+		}
 		delete json2;
 	}
+	SetDlgItemText(IDC_EDIT_JSONTEST, json.emit());
 	
-	
-	strTemp = jsonParent.emit();
-	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+	json.WriteFile(L"C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\Ckjsonobject(안시).json");
+	//strTemp.Format(json.lastErrorText());
+	//SetDlgItemText(IDC_EDIT_STATUS, strTemp);
+#else
+	CkJsonObject json;
+	json.put_EmitCompact(false);
+	json.put_Utf8(false);
+	CString strNum, strLine, strTemp;
+	int i, j;
 
-	CString strTemp2;
-	if (jsonParent.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest_005.json")) // 성공 1 , 실패 0
+	for (i = 0; i < 4; i++)
 	{
-		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
-	}
-	else {
-		//SetDlgItemText(IDC_EDIT_STATUS, _T("응 아니야^^"));
-		strTemp2 = jsonParent.lastErrorText();
-		SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorText());
-		//SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorXml());
-				
-	}
-}
+		strNum.Format(_T("ROWNUM : %d"), i);
+		json.AddObjectAt(-1, strNum);
+		CkJsonObject *json2 = json.ObjectAt(i);
 
+		for (j = 0; j < 4; j++)
+		{
+			//json2->AddIntAt(-1,"int", 3);
+			json2->AddStringAt(-1, "ssa", "이재현");
+		}
+		delete json2;
+	}
+	//SetDlgItemText(IDC_EDIT_JSONTEST, json.emit());
 
-void CCkJsonMFC_001Dlg::OnBnClickedButton4() // __FILE__
-{
-	CString strTemp;
-	strTemp.Format(_T("__FILE__ : %s"), __FILE__);
-	AfxMessageBox(strTemp);
-	strTemp.Format(_T("__LINE__ : %s"), __LINE__);
-	AfxMessageBox(strTemp);
-	strTemp.Format(_T("__FUNCTION__ : %s"), __FUNCTION__);
-	AfxMessageBox(strTemp);
+	json.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\Ckjsonobject(안시).json");
+#endif
 }
