@@ -337,23 +337,23 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 	CString strNum;
 	int i=0, j=0;
 	bool success = false;
-	CkJsonObjectW jsonParent;
+	CkJsonObject jsonParent;
 	
 	jsonParent.put_EmitCompact(false);
 	//jsonParent.put_Utf8(true);
-	jsonParent.AddObjectAt(-1, L"asd");
+	jsonParent.AddObjectAt(-1, "asd");
 	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
 
 	for (i = 0; i < 4; i++)
 	{
 		strNum.Format(_T("ROWNUM : %d"), i);		
 		jsonParent.AddObjectAt(-1 , strNum);
-		CkJsonObjectW *json2 = jsonParent.ObjectAt(i+1);
+		CkJsonObject *json2 = jsonParent.ObjectAt(i+1);
 
 		for (j = 0; j < 4; j++)
 		{
 			//json2->AddIntAt(-1,"int", 3);
-			json2->AddStringAt(-1, L"sa", L"asdasd");
+			json2->AddStringAt(-1, "sa", "이재현");
 		}		
 		delete json2;
 	}
@@ -363,7 +363,7 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
 
 	CString strTemp2;
-	if (jsonParent.WriteFile(L"C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘\\JsonTest_005.json")) // 성공 1 , 실패 0
+	if (jsonParent.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest_005.json")) // 성공 1 , 실패 0
 	{
 		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
 	}
@@ -372,14 +372,7 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 		strTemp2 = jsonParent.lastErrorText();
 		SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorText());
 		//SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorXml());
-		
-
-		OSVERSIONINFO osvi;
-		ZeroMemory(&osvi, sizeof(OSVERSIONINFO));
-		osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-		GetVersionEx(&osvi);
-
-		
+				
 	}
 }
 

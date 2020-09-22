@@ -1,0 +1,710 @@
+{
+  "ROWNUM[1]": {
+    "ACTION": 0,
+    "NAME": "UNKNOWN"
+  },
+  "ROWNUM[2]": {
+    "ACTION": 1,
+    "NAME": "CREATE TABLE"
+  },
+  "ROWNUM[3]": {
+    "ACTION": 2,
+    "NAME": "INSERT"
+  },
+  "ROWNUM[4]": {
+    "ACTION": 3,
+    "NAME": "SELECT"
+  },
+  "ROWNUM[5]": {
+    "ACTION": 4,
+    "NAME": "CREATE CLUSTER"
+  },
+  "ROWNUM[6]": {
+    "ACTION": 5,
+    "NAME": "ALTER CLUSTER"
+  },
+  "ROWNUM[7]": {
+    "ACTION": 6,
+    "NAME": "UPDATE"
+  },
+  "ROWNUM[8]": {
+    "ACTION": 7,
+    "NAME": "DELETE"
+  },
+  "ROWNUM[9]": {
+    "ACTION": 8,
+    "NAME": "DROP CLUSTER"
+  },
+  "ROWNUM[10]": {
+    "ACTION": 9,
+    "NAME": "CREATE INDEX"
+  },
+  "ROWNUM[11]": {
+    "ACTION": 10,
+    "NAME": "DROP INDEX"
+  },
+  "ROWNUM[12]": {
+    "ACTION": 11,
+    "NAME": "ALTER INDEX"
+  },
+  "ROWNUM[13]": {
+    "ACTION": 12,
+    "NAME": "DROP TABLE"
+  },
+  "ROWNUM[14]": {
+    "ACTION": 13,
+    "NAME": "CREATE SEQUENCE"
+  },
+  "ROWNUM[15]": {
+    "ACTION": 14,
+    "NAME": "ALTER SEQUENCE"
+  },
+  "ROWNUM[16]": {
+    "ACTION": 15,
+    "NAME": "ALTER TABLE"
+  },
+  "ROWNUM[17]": {
+    "ACTION": 16,
+    "NAME": "DROP SEQUENCE"
+  },
+  "ROWNUM[18]": {
+    "ACTION": 17,
+    "NAME": "GRANT OBJECT"
+  },
+  "ROWNUM[19]": {
+    "ACTION": 18,
+    "NAME": "REVOKE OBJECT"
+  },
+  "ROWNUM[20]": {
+    "ACTION": 19,
+    "NAME": "CREATE SYNONYM"
+  },
+  "ROWNUM[21]": {
+    "ACTION": 20,
+    "NAME": "DROP SYNONYM"
+  },
+  "ROWNUM[22]": {
+    "ACTION": 21,
+    "NAME": "CREATE VIEW"
+  },
+  "ROWNUM[23]": {
+    "ACTION": 22,
+    "NAME": "DROP VIEW"
+  },
+  "ROWNUM[24]": {
+    "ACTION": 23,
+    "NAME": "VALIDATE INDEX"
+  },
+  "ROWNUM[25]": {
+    "ACTION": 24,
+    "NAME": "CREATE PROCEDURE"
+  },
+  "ROWNUM[26]": {
+    "ACTION": 25,
+    "NAME": "ALTER PROCEDURE"
+  },
+  "ROWNUM[27]": {
+    "ACTION": 26,
+    "NAME": "LOCK"
+  },
+  "ROWNUM[28]": {
+    "ACTION": 27,
+    "NAME": "NO-OP"
+  },
+  "ROWNUM[29]": {
+    "ACTION": 28,
+    "NAME": "RENAME"
+  },
+  "ROWNUM[30]": {
+    "ACTION": 29,
+    "NAME": "COMMENT"
+  },
+  "ROWNUM[31]": {
+    "ACTION": 30,
+    "NAME": "AUDIT OBJECT"
+  },
+  "ROWNUM[32]": {
+    "ACTION": 31,
+    "NAME": "NOAUDIT OBJECT"
+  },
+  "ROWNUM[33]": {
+    "ACTION": 32,
+    "NAME": "CREATE DATABASE LINK"
+  },
+  "ROWNUM[34]": {
+    "ACTION": 33,
+    "NAME": "DROP DATABASE LINK"
+  },
+  "ROWNUM[35]": {
+    "ACTION": 34,
+    "NAME": "CREATE DATABASE"
+  },
+  "ROWNUM[36]": {
+    "ACTION": 35,
+    "NAME": "ALTER DATABASE"
+  },
+  "ROWNUM[37]": {
+    "ACTION": 36,
+    "NAME": "CREATE ROLLBACK SEG"
+  },
+  "ROWNUM[38]": {
+    "ACTION": 37,
+    "NAME": "ALTER ROLLBACK SEG"
+  },
+  "ROWNUM[39]": {
+    "ACTION": 38,
+    "NAME": "DROP ROLLBACK SEG"
+  },
+  "ROWNUM[40]": {
+    "ACTION": 39,
+    "NAME": "CREATE TABLESPACE"
+  },
+  "ROWNUM[41]": {
+    "ACTION": 40,
+    "NAME": "ALTER TABLESPACE"
+  },
+  "ROWNUM[42]": {
+    "ACTION": 41,
+    "NAME": "DROP TABLESPACE"
+  },
+  "ROWNUM[43]": {
+    "ACTION": 42,
+    "NAME": "ALTER SESSION"
+  },
+  "ROWNUM[44]": {
+    "ACTION": 43,
+    "NAME": "ALTER USER"
+  },
+  "ROWNUM[45]": {
+    "ACTION": 44,
+    "NAME": "COMMIT"
+  },
+  "ROWNUM[46]": {
+    "ACTION": 45,
+    "NAME": "ROLLBACK"
+  },
+  "ROWNUM[47]": {
+    "ACTION": 46,
+    "NAME": "SAVEPOINT"
+  },
+  "ROWNUM[48]": {
+    "ACTION": 47,
+    "NAME": "PL/SQL EXECUTE"
+  },
+  "ROWNUM[49]": {
+    "ACTION": 48,
+    "NAME": "SET TRANSACTION"
+  },
+  "ROWNUM[50]": {
+    "ACTION": 49,
+    "NAME": "ALTER SYSTEM"
+  },
+  "ROWNUM[51]": {
+    "ACTION": 50,
+    "NAME": "EXPLAIN"
+  },
+  "ROWNUM[52]": {
+    "ACTION": 51,
+    "NAME": "CREATE USER"
+  },
+  "ROWNUM[53]": {
+    "ACTION": 52,
+    "NAME": "CREATE ROLE"
+  },
+  "ROWNUM[54]": {
+    "ACTION": 53,
+    "NAME": "DROP USER"
+  },
+  "ROWNUM[55]": {
+    "ACTION": 54,
+    "NAME": "DROP ROLE"
+  },
+  "ROWNUM[56]": {
+    "ACTION": 55,
+    "NAME": "SET ROLE"
+  },
+  "ROWNUM[57]": {
+    "ACTION": 56,
+    "NAME": "CREATE SCHEMA"
+  },
+  "ROWNUM[58]": {
+    "ACTION": 57,
+    "NAME": "CREATE CONTROL FILE"
+  },
+  "ROWNUM[59]": {
+    "ACTION": 59,
+    "NAME": "CREATE TRIGGER"
+  },
+  "ROWNUM[60]": {
+    "ACTION": 60,
+    "NAME": "ALTER TRIGGER"
+  },
+  "ROWNUM[61]": {
+    "ACTION": 61,
+    "NAME": "DROP TRIGGER"
+  },
+  "ROWNUM[62]": {
+    "ACTION": 62,
+    "NAME": "ANALYZE TABLE"
+  },
+  "ROWNUM[63]": {
+    "ACTION": 63,
+    "NAME": "ANALYZE INDEX"
+  },
+  "ROWNUM[64]": {
+    "ACTION": 64,
+    "NAME": "ANALYZE CLUSTER"
+  },
+  "ROWNUM[65]": {
+    "ACTION": 65,
+    "NAME": "CREATE PROFILE"
+  },
+  "ROWNUM[66]": {
+    "ACTION": 66,
+    "NAME": "DROP PROFILE"
+  },
+  "ROWNUM[67]": {
+    "ACTION": 67,
+    "NAME": "ALTER PROFILE"
+  },
+  "ROWNUM[68]": {
+    "ACTION": 68,
+    "NAME": "DROP PROCEDURE"
+  },
+  "ROWNUM[69]": {
+    "ACTION": 70,
+    "NAME": "ALTER RESOURCE COST"
+  },
+  "ROWNUM[70]": {
+    "ACTION": 71,
+    "NAME": "CREATE MATERIALIZED VIEW LOG"
+  },
+  "ROWNUM[71]": {
+    "ACTION": 72,
+    "NAME": "ALTER MATERIALIZED VIEW LOG"
+  },
+  "ROWNUM[72]": {
+    "ACTION": 73,
+    "NAME": "DROP MATERIALIZED VIEW LOG"
+  },
+  "ROWNUM[73]": {
+    "ACTION": 74,
+    "NAME": "CREATE MATERIALIZED VIEW"
+  },
+  "ROWNUM[74]": {
+    "ACTION": 75,
+    "NAME": "ALTER MATERIALIZED VIEW"
+  },
+  "ROWNUM[75]": {
+    "ACTION": 76,
+    "NAME": "DROP MATERIALIZED VIEW"
+  },
+  "ROWNUM[76]": {
+    "ACTION": 77,
+    "NAME": "CREATE TYPE"
+  },
+  "ROWNUM[77]": {
+    "ACTION": 78,
+    "NAME": "DROP TYPE"
+  },
+  "ROWNUM[78]": {
+    "ACTION": 79,
+    "NAME": "ALTER ROLE"
+  },
+  "ROWNUM[79]": {
+    "ACTION": 80,
+    "NAME": "ALTER TYPE"
+  },
+  "ROWNUM[80]": {
+    "ACTION": 81,
+    "NAME": "CREATE TYPE BODY"
+  },
+  "ROWNUM[81]": {
+    "ACTION": 82,
+    "NAME": "ALTER TYPE BODY"
+  },
+  "ROWNUM[82]": {
+    "ACTION": 83,
+    "NAME": "DROP TYPE BODY"
+  },
+  "ROWNUM[83]": {
+    "ACTION": 84,
+    "NAME": "DROP LIBRARY"
+  },
+  "ROWNUM[84]": {
+    "ACTION": 85,
+    "NAME": "TRUNCATE TABLE"
+  },
+  "ROWNUM[85]": {
+    "ACTION": 86,
+    "NAME": "TRUNCATE CLUSTER"
+  },
+  "ROWNUM[86]": {
+    "ACTION": 91,
+    "NAME": "CREATE FUNCTION"
+  },
+  "ROWNUM[87]": {
+    "ACTION": 92,
+    "NAME": "ALTER FUNCTION"
+  },
+  "ROWNUM[88]": {
+    "ACTION": 93,
+    "NAME": "DROP FUNCTION"
+  },
+  "ROWNUM[89]": {
+    "ACTION": 94,
+    "NAME": "CREATE PACKAGE"
+  },
+  "ROWNUM[90]": {
+    "ACTION": 95,
+    "NAME": "ALTER PACKAGE"
+  },
+  "ROWNUM[91]": {
+    "ACTION": 96,
+    "NAME": "DROP PACKAGE"
+  },
+  "ROWNUM[92]": {
+    "ACTION": 97,
+    "NAME": "CREATE PACKAGE BODY"
+  },
+  "ROWNUM[93]": {
+    "ACTION": 98,
+    "NAME": "ALTER PACKAGE BODY"
+  },
+  "ROWNUM[94]": {
+    "ACTION": 99,
+    "NAME": "DROP PACKAGE BODY"
+  },
+  "ROWNUM[95]": {
+    "ACTION": 100,
+    "NAME": "LOGON"
+  },
+  "ROWNUM[96]": {
+    "ACTION": 101,
+    "NAME": "LOGOFF"
+  },
+  "ROWNUM[97]": {
+    "ACTION": 102,
+    "NAME": "LOGOFF BY CLEANUP"
+  },
+  "ROWNUM[98]": {
+    "ACTION": 103,
+    "NAME": "SESSION REC"
+  },
+  "ROWNUM[99]": {
+    "ACTION": 104,
+    "NAME": "SYSTEM AUDIT"
+  },
+  "ROWNUM[100]": {
+    "ACTION": 105,
+    "NAME": "SYSTEM NOAUDIT"
+  },
+  "ROWNUM[101]": {
+    "ACTION": 106,
+    "NAME": "AUDIT DEFAULT"
+  },
+  "ROWNUM[102]": {
+    "ACTION": 107,
+    "NAME": "NOAUDIT DEFAULT"
+  },
+  "ROWNUM[103]": {
+    "ACTION": 108,
+    "NAME": "SYSTEM GRANT"
+  },
+  "ROWNUM[104]": {
+    "ACTION": 109,
+    "NAME": "SYSTEM REVOKE"
+  },
+  "ROWNUM[105]": {
+    "ACTION": 110,
+    "NAME": "CREATE PUBLIC SYNONYM"
+  },
+  "ROWNUM[106]": {
+    "ACTION": 111,
+    "NAME": "DROP PUBLIC SYNONYM"
+  },
+  "ROWNUM[107]": {
+    "ACTION": 112,
+    "NAME": "CREATE PUBLIC DATABASE LINK"
+  },
+  "ROWNUM[108]": {
+    "ACTION": 113,
+    "NAME": "DROP PUBLIC DATABASE LINK"
+  },
+  "ROWNUM[109]": {
+    "ACTION": 114,
+    "NAME": "GRANT ROLE"
+  },
+  "ROWNUM[110]": {
+    "ACTION": 115,
+    "NAME": "REVOKE ROLE"
+  },
+  "ROWNUM[111]": {
+    "ACTION": 116,
+    "NAME": "EXECUTE PROCEDURE"
+  },
+  "ROWNUM[112]": {
+    "ACTION": 117,
+    "NAME": "USER COMMENT"
+  },
+  "ROWNUM[113]": {
+    "ACTION": 118,
+    "NAME": "ENABLE TRIGGER"
+  },
+  "ROWNUM[114]": {
+    "ACTION": 119,
+    "NAME": "DISABLE TRIGGER"
+  },
+  "ROWNUM[115]": {
+    "ACTION": 120,
+    "NAME": "ENABLE ALL TRIGGERS"
+  },
+  "ROWNUM[116]": {
+    "ACTION": 121,
+    "NAME": "DISABLE ALL TRIGGERS"
+  },
+  "ROWNUM[117]": {
+    "ACTION": 122,
+    "NAME": "NETWORK ERROR"
+  },
+  "ROWNUM[118]": {
+    "ACTION": 123,
+    "NAME": "EXECUTE TYPE"
+  },
+  "ROWNUM[119]": {
+    "ACTION": 128,
+    "NAME": "FLASHBACK"
+  },
+  "ROWNUM[120]": {
+    "ACTION": 129,
+    "NAME": "CREATE SESSION"
+  },
+  "ROWNUM[121]": {
+    "ACTION": 130,
+    "NAME": "ALTER MINING MODEL"
+  },
+  "ROWNUM[122]": {
+    "ACTION": 131,
+    "NAME": "SELECT MINING MODEL"
+  },
+  "ROWNUM[123]": {
+    "ACTION": 133,
+    "NAME": "CREATE MINING MODEL"
+  },
+  "ROWNUM[124]": {
+    "ACTION": 134,
+    "NAME": "ALTER PUBLIC SYNONYM"
+  },
+  "ROWNUM[125]": {
+    "ACTION": 157,
+    "NAME": "CREATE DIRECTORY"
+  },
+  "ROWNUM[126]": {
+    "ACTION": 158,
+    "NAME": "DROP DIRECTORY"
+  },
+  "ROWNUM[127]": {
+    "ACTION": 159,
+    "NAME": "CREATE LIBRARY"
+  },
+  "ROWNUM[128]": {
+    "ACTION": 160,
+    "NAME": "CREATE JAVA"
+  },
+  "ROWNUM[129]": {
+    "ACTION": 161,
+    "NAME": "ALTER JAVA"
+  },
+  "ROWNUM[130]": {
+    "ACTION": 162,
+    "NAME": "DROP JAVA"
+  },
+  "ROWNUM[131]": {
+    "ACTION": 163,
+    "NAME": "CREATE OPERATOR"
+  },
+  "ROWNUM[132]": {
+    "ACTION": 164,
+    "NAME": "CREATE INDEXTYPE"
+  },
+  "ROWNUM[133]": {
+    "ACTION": 165,
+    "NAME": "DROP INDEXTYPE"
+  },
+  "ROWNUM[134]": {
+    "ACTION": 166,
+    "NAME": "ALTER INDEXTYPE"
+  },
+  "ROWNUM[135]": {
+    "ACTION": 167,
+    "NAME": "DROP OPERATOR"
+  },
+  "ROWNUM[136]": {
+    "ACTION": 168,
+    "NAME": "ASSOCIATE STATISTICS"
+  },
+  "ROWNUM[137]": {
+    "ACTION": 169,
+    "NAME": "DISASSOCIATE STATISTICS"
+  },
+  "ROWNUM[138]": {
+    "ACTION": 170,
+    "NAME": "CALL METHOD"
+  },
+  "ROWNUM[139]": {
+    "ACTION": 171,
+    "NAME": "CREATE SUMMARY"
+  },
+  "ROWNUM[140]": {
+    "ACTION": 172,
+    "NAME": "ALTER SUMMARY"
+  },
+  "ROWNUM[141]": {
+    "ACTION": 173,
+    "NAME": "DROP SUMMARY"
+  },
+  "ROWNUM[142]": {
+    "ACTION": 174,
+    "NAME": "CREATE DIMENSION"
+  },
+  "ROWNUM[143]": {
+    "ACTION": 175,
+    "NAME": "ALTER DIMENSION"
+  },
+  "ROWNUM[144]": {
+    "ACTION": 176,
+    "NAME": "DROP DIMENSION"
+  },
+  "ROWNUM[145]": {
+    "ACTION": 177,
+    "NAME": "CREATE CONTEXT"
+  },
+  "ROWNUM[146]": {
+    "ACTION": 178,
+    "NAME": "DROP CONTEXT"
+  },
+  "ROWNUM[147]": {
+    "ACTION": 179,
+    "NAME": "ALTER OUTLINE"
+  },
+  "ROWNUM[148]": {
+    "ACTION": 180,
+    "NAME": "CREATE OUTLINE"
+  },
+  "ROWNUM[149]": {
+    "ACTION": 181,
+    "NAME": "DROP OUTLINE"
+  },
+  "ROWNUM[150]": {
+    "ACTION": 182,
+    "NAME": "UPDATE INDEXES"
+  },
+  "ROWNUM[151]": {
+    "ACTION": 183,
+    "NAME": "ALTER OPERATOR"
+  },
+  "ROWNUM[152]": {
+    "ACTION": 192,
+    "NAME": "ALTER SYNONYM"
+  },
+  "ROWNUM[153]": {
+    "ACTION": 197,
+    "NAME": "PURGE USER_RECYCLEBIN"
+  },
+  "ROWNUM[154]": {
+    "ACTION": 198,
+    "NAME": "PURGE DBA_RECYCLEBIN"
+  },
+  "ROWNUM[155]": {
+    "ACTION": 199,
+    "NAME": "PURGE TABLESPACE"
+  },
+  "ROWNUM[156]": {
+    "ACTION": 200,
+    "NAME": "PURGE TABLE"
+  },
+  "ROWNUM[157]": {
+    "ACTION": 201,
+    "NAME": "PURGE INDEX"
+  },
+  "ROWNUM[158]": {
+    "ACTION": 202,
+    "NAME": "UNDROP OBJECT"
+  },
+  "ROWNUM[159]": {
+    "ACTION": 204,
+    "NAME": "FLASHBACK DATABASE"
+  },
+  "ROWNUM[160]": {
+    "ACTION": 205,
+    "NAME": "FLASHBACK TABLE"
+  },
+  "ROWNUM[161]": {
+    "ACTION": 206,
+    "NAME": "CREATE RESTORE POINT"
+  },
+  "ROWNUM[162]": {
+    "ACTION": 207,
+    "NAME": "DROP RESTORE POINT"
+  },
+  "ROWNUM[163]": {
+    "ACTION": 208,
+    "NAME": "PROXY AUTHENTICATION ONLY"
+  },
+  "ROWNUM[164]": {
+    "ACTION": 209,
+    "NAME": "DECLARE REWRITE EQUIVALENCE"
+  },
+  "ROWNUM[165]": {
+    "ACTION": 210,
+    "NAME": "ALTER REWRITE EQUIVALENCE"
+  },
+  "ROWNUM[166]": {
+    "ACTION": 211,
+    "NAME": "DROP REWRITE EQUIVALENCE"
+  },
+  "ROWNUM[167]": {
+    "ACTION": 212,
+    "NAME": "CREATE EDITION"
+  },
+  "ROWNUM[168]": {
+    "ACTION": 213,
+    "NAME": "ALTER EDITION"
+  },
+  "ROWNUM[169]": {
+    "ACTION": 214,
+    "NAME": "DROP EDITION"
+  },
+  "ROWNUM[170]": {
+    "ACTION": 215,
+    "NAME": "DROP ASSEMBLY"
+  },
+  "ROWNUM[171]": {
+    "ACTION": 216,
+    "NAME": "CREATE ASSEMBLY"
+  },
+  "ROWNUM[172]": {
+    "ACTION": 217,
+    "NAME": "ALTER ASSEMBLY"
+  },
+  "ROWNUM[173]": {
+    "ACTION": 218,
+    "NAME": "CREATE FLASHBACK ARCHIVE"
+  },
+  "ROWNUM[174]": {
+    "ACTION": 219,
+    "NAME": "ALTER FLASHBACK ARCHIVE"
+  },
+  "ROWNUM[175]": {
+    "ACTION": 220,
+    "NAME": "DROP FLASHBACK ARCHIVE"
+  },
+  "ROWNUM[176]": {
+    "ACTION": 225,
+    "NAME": "ALTER DATABASE LINK"
+  },
+  "ROWNUM[177]": {
+    "ACTION": 305,
+    "NAME": "ALTER PUBLIC DATABASE LINK"
+  }
+}

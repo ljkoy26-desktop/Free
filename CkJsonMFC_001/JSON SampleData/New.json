@@ -1,0 +1,152 @@
+{
+  "ROWNUM[1]": {
+    "EMPNO": 7369,
+    "ENAME": "SMITH",
+    "JOB": "CLERK",
+    "MGR": 7902,
+    "HIREDATE": "1980/12/17 00:00:00",
+    "SAL": 800,
+    "COMM": ,
+    "DEPTNO": 20
+  },
+  "ROWNUM[2]": {
+    "EMPNO": 7499,
+    "ENAME": "ALLEN",
+    "JOB": "SALESMAN",
+    "MGR": 7698,
+    "HIREDATE": "1981/02/20 00:00:00",
+    "SAL": 1600,
+    "COMM": 300,
+    "DEPTNO": 30
+  },
+  "ROWNUM[3]": {
+    "EMPNO": 7521,
+    "ENAME": "WARD",
+    "JOB": "SALESMAN",
+    "MGR": 7698,
+    "HIREDATE": "1981/02/22 00:00:00",
+    "SAL": 1250,
+    "COMM": 500,
+    "DEPTNO": 30
+  },
+  "ROWNUM[4]": {
+    "EMPNO": 7566,
+    "ENAME": "JONES",
+    "JOB": "MANAGER",
+    "MGR": 7839,
+    "HIREDATE": "1981/04/02 00:00:00",
+    "SAL": 2975,
+    "COMM": ,
+    "DEPTNO": 20
+  },
+  "ROWNUM[5]": {
+    "EMPNO": 7654,
+    "ENAME": "MARTIN",
+    "JOB": "SALESMAN",
+    "MGR": 7698,
+    "HIREDATE": "1981/09/28 00:00:00",
+    "SAL": 1250,
+    "COMM": 1400,
+    "DEPTNO": 30
+  },
+  "ROWNUM[6]": {
+    "EMPNO": 7698,
+    "ENAME": "BLAKE",
+    "JOB": "MANAGER",
+    "MGR": 7839,
+    "HIREDATE": "1981/05/01 00:00:00",
+    "SAL": 2850,
+    "COMM": ,
+    "DEPTNO": 30
+  },
+  "ROWNUM[7]": {
+    "EMPNO": 7782,
+    "ENAME": "CLARK",
+    "JOB": "MANAGER",
+    "MGR": 7839,
+    "HIREDATE": "1981/06/09 00:00:00",
+    "SAL": 2450,
+    "COMM": ,
+    "DEPTNO": 10
+  },
+  "ROWNUM[8]": {
+    "EMPNO": 7788,
+    "ENAME": "SCOTT",
+    "JOB": "ANALYST",
+    "MGR": 7566,
+    "HIREDATE": "1987/04/19 00:00:00",
+    "SAL": 3000,
+    "COMM": ,
+    "DEPTNO": 20
+  },
+  "ROWNUM[9]": {
+    "EMPNO": 7839,
+    "ENAME": "KING",
+    "JOB": "PRESIDENT",
+    "MGR": ,
+    "HIREDATE": "1981/11/17 00:00:00",
+    "SAL": 5000,
+    "COMM": ,
+    "DEPTNO": 10
+  },
+  "ROWNUM[10]": {
+    "EMPNO": 7844,
+    "ENAME": "TURNER",
+    "JOB": "SALESMAN",
+    "MGR": 7698,
+    "HIREDATE": "1981/09/08 00:00:00",
+    "SAL": 1500,
+    "COMM": 0,
+    "DEPTNO": 30
+  },
+  "ROWNUM[11]": {
+    "EMPNO": 7876,
+    "ENAME": "ADAMS",
+    "JOB": "CLERK",
+    "MGR": 7788,
+    "HIREDATE": "1987/05/23 00:00:00",
+    "SAL": 1100,
+    "COMM": ,
+    "DEPTNO": 20
+  },
+  "ROWNUM[12]": {
+    "EMPNO": 7900,
+    "ENAME": "JAMES",
+    "JOB": "CLERK",
+    "MGR": 7698,
+    "HIREDATE": "1981/12/03 00:00:00",
+    "SAL": 950,
+    "COMM": ,
+    "DEPTNO": 30
+  },
+  "ROWNUM[13]": {
+    "EMPNO": 7902,
+    "ENAME": "FORD",
+    "JOB": "ANALYST",
+    "MGR": 7566,
+    "HIREDATE": "1981/12/03 00:00:00",
+    "SAL": 3000,
+    "COMM": ,
+    "DEPTNO": 20
+  },
+  "ROWNUM[14]": {
+    "EMPNO": 7934,
+    "ENAME": "MILLER",
+    "JOB": "CLERK",
+    "MGR": 7782,
+    "HIREDATE": "1982/01/23 00:00:00",
+    "SAL": 1300,
+    "COMM": ,
+    "DEPTNO": 10
+  },
+  "ROWNUM[15]": {
+    "EMPNO": 345,
+    "ENAME": "이재현",
+    "JOB": "대학생",
+    "MGR": 1455,
+    "HIREDATE": "1981/02/20 00:00:00",
+    "SAL": 14515,
+    "COMM": 3000,
+    "DEPTNO": 12
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "ROWNUM[1]": {
+    "CID": "1",
+    "INFO": "<product xmlns=\"http://posample.org\" pid=\"온리\"><디스크립션>\n  <네임>Tool bag</네임>\n  <details>\n    Super Deluxe tool bag:\n    - 26 inches long, 12 inches wide\n    - Curved padded handle\n    - Locking latch\n    - Reinforced exterior pockets\n   </details>\n   <price>14.95</price>\n   <weight>3 kg</weight>\n  </디스크립션>\n</product>"
+  },
+  "ROWNUM[2]": {
+    "CID": "2",
+    "INFO": "<product xmlns=\"http://posample.org\" pid=\"온리\"><디스크립션>\n  <네임>Tool bag</네임>  <details>\n    Super Deluxe tool bag:\n    - 26 inches long, 12 inches wide\n    - Curved padded handle\n    - Locking latch\n    - Reinforced exterior pockets\n   </details>\n   <price>14.95</price><weight>3 kg</weight>\n  </디스크립션>\n</product>"
+  },
+  "ROWNUM[3]": {
+    "CID": "21",
+    "INFO": "<?xml version=\"1.0\" encoding=\"KSC-5601\" ?><as>asd</as>"
+  },
+  "ROWNUM[4]": {
+    "CID": "22",
+    "INFO": "<?xml version=\"1.0\" encoding=\"KSC-561\" ?><as>asd</as>"
+  },
+  "ROWNUM[5]": {
+    "CID": "23",
+    "INFO": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><as>asd</as>"
+  }
+}

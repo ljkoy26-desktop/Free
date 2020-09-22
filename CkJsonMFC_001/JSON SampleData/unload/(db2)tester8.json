@@ -1,0 +1,47 @@
+{
+  "ROWNUM[1]": {
+    "TEST1": 1,
+    "TEST2": "king01",
+    "TEST3": 10
+  },
+  "ROWNUM[2]": {
+    "TEST1": 2,
+    "TEST2": "tayo",
+    "TEST3": 20
+  },
+  "ROWNUM[3]": {
+    "TEST1": 3,
+    "TEST2": "krong03",
+    "TEST3": 30
+  },
+  "ROWNUM[4]": {
+    "TEST1": 4,
+    "TEST2": "king04",
+    "TEST3": 40
+  },
+  "ROWNUM[5]": {
+    "TEST1": 5,
+    "TEST2": "dog",
+    "TEST3": 50
+  },
+  "ROWNUM[6]": {
+    "TEST1": 6,
+    "TEST2": "»Ç·Î·Î",
+    "TEST3": 60
+  },
+  "ROWNUM[7]": {
+    "TEST1": 7,
+    "TEST2": "»çÀÚ",
+    "TEST3": 70
+  },
+  "ROWNUM[8]": {
+    "TEST1": 8,
+    "TEST2": "ÄÚ³¢¸®",
+    "TEST3": 80
+  },
+  "ROWNUM[9]": {
+    "TEST1": 9,
+    "TEST2": "¿ø¼þÀÌ",
+    "TEST3": 90
+  }
+}
