@@ -97,7 +97,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>../lib/chilkat;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ChilkatDbg.lib;ChilkatDbgDll.lib;</AdditionalDependencies>
+      <AdditionalDependencies>ChilkatDbgDll.lib;</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

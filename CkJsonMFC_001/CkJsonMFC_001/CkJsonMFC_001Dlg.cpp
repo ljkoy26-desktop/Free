@@ -7,10 +7,6 @@
 #include "CkJsonMFC_001Dlg.h"
 #include "afxdialogex.h"
 
-#include "CkJsonObject.h"
-#include "CkJsonObjectW.h"
-#include "CkJsonArray.h"
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -115,6 +111,10 @@ BOOL CCkJsonMFC_001Dlg::OnInitDialog()
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 
+
+	m_pJsonObject = new CkJsonObjectT;
+
+
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -184,25 +184,24 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 		"JOB":"CLERK"
 	  }
 	*/
-	CkString strOut;
+	CString strOut;
 	CString strTemp = _T("JSON TEST");
 	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
 
-	CkJsonObject json;
+	CkJsonObjectT json;
 
 	bool success;
 	int index = -1;
 
-	success = json.AddStringAt(0, "Title", "Pan's Labyrinth");
-	success = json.AddStringAt(1, "Director", "Guillermo del Toro");
-	success = json.AddStringAt(2, "Original_Title", "El laberinto del fauno");
-	success = json.AddIntAt(3, "Year_Released", 2006);
-	success = json.AddNumberAt(4, "Year_Released", "2006.12");
+	success = json.AddStringAt(0, _T("Title"), _T("Pan's Labyrinth"));
+	success = json.AddStringAt(1, _T("Director"), _T("Guillermo del Toro"));
+	success = json.AddStringAt(2, _T("Original_Title"), _T("El laberinto del fauno"));
+	success = json.AddIntAt(3, _T("Year_Released"), 2006);
+	success = json.AddNumberAt(4, _T("Year_Released"), _T("2006.12"));
 	
 	json.put_EmitCompact(false);
-	strOut.append(json.emit());
-	strOut.append("\r\n");
-
+	strOut = json.emit();
+	strOut += _T("\r\n");
 	/************************/
 	
 
@@ -228,7 +227,7 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 {
 
-	CkJsonObject json;
+	CkJsonObjectT json;
 
 	bool success;
 	json.put_EmitCompact(false);
@@ -236,18 +235,18 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 
 	//  An index value of -1 is used to append at the end.
 	int index = -1;
-	success = json.AddStringAt(-1, "Title", "The Cuckoo's Calling");
-	success = json.AddStringAt(-1, "Author", "Robert Galbraith");
-	success = json.AddStringAt(-1, "Genre", "classic crime novel");
+	success = json.AddStringAt(-1, _T("Title"), _T("The Cuckoo's Calling"));
+	success = json.AddStringAt(-1, _T("Author"), _T("Robert Galbraith"));
+	success = json.AddStringAt(-1, _T("Genre"), _T("classic crime novel"));
 
 	//  Let's create the Detail JSON object:
-	success = json.AddObjectAt(-1, "Detail");
-	CkJsonObject *detail = json.ObjectAt(json.get_Size() - 1);
-	success = detail->AddStringAt(-1, "Publisher", "Little Brown");
-	success = detail->AddIntAt(-1, "Publication_Year", 2013); // 소수지원이 안된다. number 타입 추천
-	success = detail->AddNumberAt(-1, "ISBN-13", "9781408704004");
-	success = detail->AddStringAt(-1, "Language", "English");
-	success = detail->AddIntAt(-1, "Pages", 494);
+	success = json.AddObjectAt(-1, _T("Detail"));
+	CkJsonObjectT *detail = json.ObjectAt(json.get_Size() - 1);
+	success = detail->AddStringAt(-1, _T("Publisher"), _T("Little Brown"));
+	success = detail->AddIntAt(-1, _T("Publication_Year"), 2013); // 소수지원이 안된다. number 타입 추천
+	success = detail->AddNumberAt(-1, _T("ISBN-13"), _T("9yu781408704004"));
+	success = detail->AddStringAt(-1, _T("Language"), _T("English"));
+	success = detail->AddIntAt(-1, _T("Pages"), 494);
 	delete detail;
 
 	//  Add the array for Price
@@ -255,23 +254,23 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 
 
 
-	success = json.AddArrayAt(-1, "Price");
-	CkJsonArray *aPrice = json.ArrayAt(json.get_Size() - 1);
+	success = json.AddArrayAt(-1, _T("Price"));
+	CkJsonArrayT *aPrice = json.ArrayAt(json.get_Size() - 1);
 
 	//  Entry entry in aPrice will be a JSON object.
 
 	//  Append a new/empty ojbect to the end of the aPrice array.
 	success = aPrice->AddObjectAt(-1);
 	//  Get the object that was just appended.
-	CkJsonObject *priceObj = aPrice->ObjectAt(aPrice->get_Size() - 1);
-	success = priceObj->AddStringAt(-1, "type", "Hardcover");
-	success = priceObj->AddNumberAt(-1, "price", "16.65");
+	CkJsonObjectT *priceObj = aPrice->ObjectAt(aPrice->get_Size() - 1);
+	success = priceObj->AddStringAt(-1, _T("type"), _T("Hardcover"));
+	success = priceObj->AddNumberAt(-1, _T("price"), _T("16.65"));
 	delete priceObj;
 
 	success = aPrice->AddObjectAt(-1);
 	priceObj = aPrice->ObjectAt(aPrice->get_Size() - 1);
-	success = priceObj->AddStringAt(-1, "type", "Kindle Edition");
-	success = priceObj->AddNumberAt(-1, "price", "7.00");
+	success = priceObj->AddStringAt(-1, _T("type"), _T("Kindle Edition"));
+	success = priceObj->AddNumberAt(-1, _T("price"), _T("7.00"));
 
 	delete priceObj;
 	delete aPrice;
@@ -285,109 +284,104 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton2() // 중첩배열
 {
-	//CkJsonObject json;
-	//CString strTemp;
-	//CString strTemp2;
-	//// This is the above JSON with whitespace chars removed (SPACE, TAB, CR, and LF chars).
-	//// The presence of whitespace chars for pretty-printing makes no difference to the Load
-	//// method. 
-	//const char *jsonStr = "{ \"numbers\" : [ [\"even\", 2, 4, 6, 8], [\"prime\", 2, 3, 5, 7, 11, 13] ] }";
+	CkJsonObjectT json;
+	CString strTemp;
+	CString strTemp2;
+	// This is the above JSON with whitespace chars removed (SPACE, TAB, CR, and LF chars).
+	// The presence of whitespace chars for pretty-printing makes no difference to the Load
+	// method. 
+	TCHAR *jsonStr = _T("{ \"numbers\" : [ [\"even\", 2, 4, 6, 8], [\"prime\", 2, 3, 5, 7, 11, 13] ] }");
 
-	//bool success = json.Load(jsonStr);
-	//if (success != true) {
-	//	SetDlgItemText(IDC_EDIT_JSONTEST, json.lastErrorText());
-	//	return;
-	//}
+	bool success = json.Load(jsonStr);
+	if (success != true) {
+		SetDlgItemText(IDC_EDIT_JSONTEST, json.lastErrorText());
+		return;
+	}
 
-	//// Get the value of the "numbers" object, which is an array that contains JSON arrays.
-	//CkJsonArray *outerArray = json.ArrayOf("numbers");
-	//if (json.get_LastMethodSuccess() == false) {
-	//	SetDlgItemText(IDC_EDIT_JSONTEST, "numbers array not found.");
-	//	return;
-	//}
+	// Get the value of the "numbers" object, which is an array that contains JSON arrays.
+	CkJsonArrayT *outerArray = json.ArrayOf(_T("numbers"));
+	if (json.get_LastMethodSuccess() == false) {
+		SetDlgItemText(IDC_EDIT_JSONTEST, _T("numbers array not found."));
+		return;
+	}
 
-	//int numArrays = outerArray->get_Size();
-	//int i;
+	int numArrays = outerArray->get_Size();
+	int i;
 
-	//for (i = 0; i <= numArrays - 1; i++) {
+	for (i = 0; i <= numArrays - 1; i++) {
 
-	//	CkJsonArray *innerArray = outerArray->ArrayAt(i);
+		CkJsonArrayT *innerArray = outerArray->ArrayAt(i);
 
-	//	// The first item in the innerArray is a string
-	//	strTemp = innerArray->stringAt(0);
-	//	strTemp += ":\r\n";
+		// The first item in the innerArray is a string
+		strTemp = innerArray->stringAt(0);
+		strTemp += ":\r\n";
 
-	//	int numInnerItems = innerArray->get_Size();
-	//	int j;
-	//	for (j = 1; j <= numInnerItems - 1; j++) {
+		int numInnerItems = innerArray->get_Size();
+		int j;
+		for (j = 1; j <= numInnerItems - 1; j++) {
 
-	//		strTemp2.Format("%d", innerArray->IntAt(0));
-	//		strTemp += strTemp2;
-	//		strTemp += ":\r\n";
-	//		strTemp2 = "";			
-	//	}
-	//	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
-	//	delete innerArray;
-	//}
+			strTemp2.Format(_T("%d"), innerArray->IntAt(0));
+			strTemp += strTemp2;
+			strTemp += ":\r\n";
+			strTemp2 = "";			
+		}
+		SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+		delete innerArray;
+	}
 
-	//delete outerArray;
+	delete outerArray;
 }
 
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton3() // EMP버튼
 {
-//	CString strTemp;
-//	CString strNum;
-//	int i=0, j=0;
-//	bool success = false;
-//	CkJsonObject jsonParent;
-//	
-//	jsonParent.put_EmitCompact(false);
-//	//jsonParent.put_Utf8(true);
-//	jsonParent.AddObjectAt(-1, "asd");
-//	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
-//
-//	for (i = 0; i < 4; i++)
-//	{
-//		strNum.Format(_T("ROWNUM : %d"), i);		
-//		jsonParent.AddObjectAt(-1 , strNum);
-//		CkJsonObject *json2 = jsonParent.ObjectAt(i+1);
-//
-//		for (j = 0; j < 4; j++)
-//		{
-//			//json2->AddIntAt(-1,"int", 3);
-//			json2->AddStringAt(-1, "sa", "이재현");
-//		}		
-//		delete json2;
-//	}
-//	
-//	
-//	strTemp = jsonParent.emit();
-//	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
-//
-//	CString strTemp2;
-//	if (jsonParent.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest_005.json")) // 성공 1 , 실패 0
-//	{
-//		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
-//	}
-//	else {
-//		//SetDlgItemText(IDC_EDIT_STATUS, _T("응 아니야^^"));
-//		strTemp2 = jsonParent.lastErrorText();
-//		SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorText());
-//		//SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorXml());
-//				
-//	}
+	CString strTemp;
+	CString strNum;
+	int i=0, j=0;
+	bool success = false;
+	CkJsonObjectT jsonParent;
+	
+	jsonParent.put_EmitCompact(false);
+	jsonParent.AddObjectAt(-1, _T("asd"));
+	/* -1는 뒤에 추가하고, 0은 앞쪽으로 추가함, 그외 숫자는 인덱스인데 잘못참조하면 튕김 */
+
+	for (i = 0; i < 4; i++)
+	{
+		strNum.Format(_T("ROWNUM : %d"), i);		
+		jsonParent.AddObjectAt(-1 , strNum);
+		CkJsonObjectT *json2 = jsonParent.ObjectAt(i+1);
+
+		for (j = 0; j < 4; j++)
+		{
+			//json2->AddIntAt(-1,"int", 3);
+			json2->AddStringAt(-1, _T("sa"), _T("이재현"));
+		}		
+		delete json2;
+	}
+	
+	
+	strTemp = jsonParent.emit();
+	SetDlgItemText(IDC_EDIT_JSONTEST, strTemp);
+
+	CString strTemp2;
+	if (jsonParent.WriteFile(_T("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON샘플\\JsonTest_005.json"))) // 성공 1 , 실패 0
+		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
+
+	else {
+		strTemp2 = jsonParent.lastErrorText();
+		SetDlgItemText(IDC_EDIT_STATUS, jsonParent.lastErrorText());
+				
+	}
 }
 
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton4() // 파일읽기
 {
-#ifdef _UNICODE
-	CStringW strTemp, strLine = L"";
-	CkJsonObjectW json;
-		CStringW strPath = L"C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\";
+	CString strTemp, strLine = _T("");
+	CkJsonObjectT json;
+	CString strPath = _T("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\");
 		
-	CStringW strFileName = L"Ckjsonobject(안시).json";
+	CString strFileName = _T("Ckjsonobject(안시).json");
 	strPath += strFileName;
 
 	if (json.LoadFile(strPath))
@@ -396,12 +390,11 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton4() // 파일읽기
 		int i, j;
 		for (i = 0; i < json.get_Size(); i++)
 		{
-			CkJsonObjectW *json2 = json.ObjectAt(i);			
+			CkJsonObjectT *json2 = json.ObjectAt(i);			
 			for (j = 0; j < json2->get_Size(); j++)
 			{				
 				strLine += json2->stringAt(j);
-				strLine.Append(L"\r\n");
-				//strLine += _T("\n");
+				strLine.Append(_T("\r\n"));
 			}
 			delete json2;
 		}
@@ -412,72 +405,14 @@ void CCkJsonMFC_001Dlg::OnBnClickedButton4() // 파일읽기
 		strTemp.Format(json.lastErrorText());
 		SetDlgItemText(IDC_EDIT_STATUS, strTemp);
 	}		
-#else
-	CString strTemp, strLine = _T("");
-	CkJsonObject json;
-	CkJsonObjectW jsonW;
-	CString strPath = "C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\";
-
-	CString strFileName = "Ckjsonobject(안시).json";
-	strPath += strFileName;
-
-	if (json.LoadFile(strPath))
-	{
-		SetDlgItemText(IDC_EDIT_STATUS, _T("성공!"));
-		int i, j;
-		for (i = 0; i < json.get_Size(); i++)
-		{
-			CkJsonObject *json2 = json.ObjectAt(i);
-			for (j = 0; j < json2->get_Size(); j++)
-			{
-				strLine += json2->stringAt(j);
-				strLine.Append("\r\n");
-				//strLine += _T("\n");
-			}
-			delete json2;
-		}
-		SetDlgItemText(IDC_EDIT_JSONTEST, strLine);
-	}
-	else
-	{
-		strTemp.Format(json.lastErrorText());
-		SetDlgItemText(IDC_EDIT_STATUS, strTemp);
-	}
-#endif
 }
 
 
 void CCkJsonMFC_001Dlg::OnBnClickedButtonWritefile()
 {
-
-#ifdef _UNICODE
-	CkJsonObjectW json;
-	json.put_EmitCompact(false);
-	CStringW strNum, strLine, strTemp;
-	int i, j;
-
-	for (i = 0; i < 4; i++)
-	{
-		strNum.Format(_T("ROWNUM : %d"), i);
-		json.AddObjectAt(-1, strNum);
-		CkJsonObjectW *json2 = json.ObjectAt(i);
-
-		for (j = 0; j < 4; j++)
-		{
-			//json2->AddIntAt(-1,"int", 3);
-			json2->AddStringAt(-1, L"sa", L"이재현");
-		}
-		delete json2;
-	}
-	SetDlgItemText(IDC_EDIT_JSONTEST, json.emit());
-	
-	json.WriteFile(L"C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\Ckjsonobject(안시).json");
-	//strTemp.Format(json.lastErrorText());
-	//SetDlgItemText(IDC_EDIT_STATUS, strTemp);
-#else
-	CkJsonObject json;
-	json.put_EmitCompact(false);
-	json.put_Utf8(false);
+	CkJsonObjectT json;
+	json.put_EmitCompact(false);	
+	json.put_DebugLogFilePath(_T("C:\\노트북깃허브\\Free\\debug"));
 	CString strNum, strLine, strTemp;
 	int i, j;
 
@@ -485,17 +420,22 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonWritefile()
 	{
 		strNum.Format(_T("ROWNUM : %d"), i);
 		json.AddObjectAt(-1, strNum);
-		CkJsonObject *json2 = json.ObjectAt(i);
+		CkJsonObjectT *json2 = json.ObjectAt(i);
 
 		for (j = 0; j < 4; j++)
 		{
 			//json2->AddIntAt(-1,"int", 3);
-			json2->AddStringAt(-1, "ssa", "이재현");
+			json2->AddStringAt(-1, _T("sa"), _T("이재현"));
 		}
 		delete json2;
 	}
-	//SetDlgItemText(IDC_EDIT_JSONTEST, json.emit());
+	SetDlgItemText(IDC_EDIT_JSONTEST, json.emit());
+	
+	json.ObjectOf(_T("asdasd"));
+//	json.WriteFile(L"C:\\노트북깃허\\Free\\CkJsonMFC_001\\JSON SampleData\\Ckjsonobject(안시).json");
+//	json.LoadFile(L"C:\\노트북깃허\\Free\\CkJsonMFC_001\\JSON SampleData\\Ckjsonobject(안시).json");
+	//strTemp.Format(json.lastErrorText());
+	strTemp.Format(json.lastErrorText());
 
-	json.WriteFile("C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\Ckjsonobject(안시).json");
-#endif
+	SetDlgItemText(IDC_EDIT_STATUS, strTemp);
 }
