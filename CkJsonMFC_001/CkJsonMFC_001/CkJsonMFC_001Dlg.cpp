@@ -113,7 +113,9 @@ BOOL CCkJsonMFC_001Dlg::OnInitDialog()
 
 
 	m_pJsonObject = new CkJsonObjectT;
-
+#ifndef _UNICODE
+	m_pJsonObject->put_Utf8(true);
+#endif
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
