@@ -228,6 +228,16 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 {
+	
+	TCHAR * pszTemp = new TCHAR[1024];
+	CString strTemp;
+	strTemp.Format(_T("[%d] \n") , sizeof(pszTemp));
+
+	TRACE(strTemp);
+
+
+
+
 
 	CkJsonObjectT json;
 
