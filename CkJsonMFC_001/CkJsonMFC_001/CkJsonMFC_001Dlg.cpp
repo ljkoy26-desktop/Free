@@ -113,7 +113,9 @@ BOOL CCkJsonMFC_001Dlg::OnInitDialog()
 
 
 	m_pJsonObject = new CkJsonObjectT;
-
+#ifndef _UNICODE
+	m_pJsonObject->put_Utf8(true);
+#endif
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -226,6 +228,16 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 {
+	
+	TCHAR * pszTemp = new TCHAR[1024];
+	CString strTemp;
+	strTemp.Format(_T("[%d] \n") , sizeof(pszTemp));
+
+	TRACE(strTemp);
+
+
+
+
 
 	CkJsonObjectT json;
 
