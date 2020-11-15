@@ -160,7 +160,7 @@ HCURSOR CRegexTestDlg::OnQueryDragIcon()
 void CRegexTestDlg::OnBnClickedButton1() // 정규식
 {
 	CString strResult;
-	strResult.Format(_T("Hello !"));
+	strResult.Format(_T("Hello SSS!"));
 
 	SetDlgItemText(IDC_EDIT_RESULT, strResult); // 추출값??
 	SetDlgItemText(IDC_EDIT_ORIGIN, strResult); // 원본 문서
