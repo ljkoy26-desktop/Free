@@ -9,6 +9,8 @@
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[]	= __FILE__;
 #endif
 
 #define JSON_FILEPATH "C:\\노트북깃허브\\Free\\CkJsonMFC_001\\JSON SampleData\\"
@@ -58,6 +60,10 @@ CCkJsonMFC_001Dlg::CCkJsonMFC_001Dlg(CWnd* pParent /*=NULL*/)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
+CCkJsonMFC_001Dlg::~CCkJsonMFC_001Dlg()
+{
+	delete m_pJsonObject;
+}
 
 void CCkJsonMFC_001Dlg::DoDataExchange(CDataExchange* pDX)
 {
@@ -75,6 +81,7 @@ BEGIN_MESSAGE_MAP(CCkJsonMFC_001Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON3, &CCkJsonMFC_001Dlg::OnBnClickedButton3)
 	ON_BN_CLICKED(IDC_BUTTON4, &CCkJsonMFC_001Dlg::OnBnClickedButton4)
 	ON_BN_CLICKED(IDC_BUTTON_WRITEFILE, &CCkJsonMFC_001Dlg::OnBnClickedButtonWritefile)
+	ON_BN_CLICKED(IDC_BUTTON5, &CCkJsonMFC_001Dlg::OnBnClickedButton5)
 END_MESSAGE_MAP()
 
 
@@ -228,17 +235,6 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonJsontest() // 테스트 버튼
 
 void CCkJsonMFC_001Dlg::OnBnClickedButton1() // 복잡한 문서
 {
-	
-	TCHAR * pszTemp = new TCHAR[1024];
-	CString strTemp;
-	strTemp.Format(_T("[%d] \n") , sizeof(pszTemp));
-
-	TRACE(strTemp);
-
-
-
-
-
 	CkJsonObjectT json;
 
 	bool success;
@@ -450,4 +446,36 @@ void CCkJsonMFC_001Dlg::OnBnClickedButtonWritefile()
 	strTemp.Format(json.lastErrorText());
 
 	SetDlgItemText(IDC_EDIT_STATUS, strTemp);
+}
+
+
+void CCkJsonMFC_001Dlg::OnBnClickedButton5() // 누수확인
+{
+	CArray<int*, int*> m_aItem;
+
+	int * n1 = new int(11);
+	int * n2 = new int(22);
+	int * n3 = new int(33);
+
+	m_aItem.Add(n1);
+	m_aItem.Add(n2);
+	m_aItem.Add(n3);
+
+	int *nElement1 = m_aItem.GetAt(0);
+	//int *nElement1 = m_aItem.ElementAt(0);
+
+	*nElement1 += 5;
+	delete nElement1;
+
+	int* pItem;
+	int nSize = m_aItem.GetSize();
+
+	int i;
+	for (i = 0; i < nSize; ++i)
+	{
+		pItem = m_aItem.GetAt(i);		
+		delete pItem;
+		pItem = NULL;
+	}
+	m_aItem.RemoveAll();
 }
